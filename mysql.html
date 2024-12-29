@@ -1,0 +1,223 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MySQL期末考试重点</title>
+<style>
+strong {
+font-weight: bold;
+font-size: larger;
+}
+</style>
+</head>
+<body>
+<h1><strong>MYSQL期末考试重点</strong></h1>
+<h2><strong>一. 建库，建表，约束，输入数据</strong></h2>
+<h3><strong>约束（创建约束条件，增加删改约束条件）</strong></h3>
+<h2><strong>二. 查询（单表查询，多表查询），limit语句，视图，存储过程</strong></h2>
+<p><strong>create database 数据库名 查看单独数据库</strong></p>
+<p><strong>show database 查看全部数据库</strong></p>
+<p><strong>MYSQL字符集合默认校对规则</strong></p>
+<p><strong>use 数据库名 [切换数据库]</strong></p>
+<h3><strong>修改数据库</strong></h3>
+<p><strong>1.添加新Alter table表名 add列名 数据类型</strong></p>
+<p><strong>2.修改列定义：</strong></p>
+<p><strong>Alter table表名modify列名 新列数据类型</strong></p>
+<p><strong>3.删除列：</strong></p>
+<p><strong>Alter table 表名 drop column 列名</strong></p>
+<p><strong>4.更改列名：</strong></p>
+<p><strong>Alter table 表名 rename 旧列名 to 新列名</strong></p>
+<p><strong>5.更改表名：</strong></p>
+<p><strong>rename 旧表名 to 新表名</strong></p>
+<p><strong>Alter table 旧表名 rename to 新表名</strong></p>
+<p><strong>6.添加主键：</strong></p>
+<p><strong>Alter table 旧表名 add primary key（列名）</strong></p>
+<p><strong>7.添加外键：</strong></p>
+<p><strong>Alter table 表名 add constraint_foreign _ key _ name foreign key（列名） reference(其它表名&#x5217;名)</strong></p>
+<p><strong>8.删除索引：</strong></p>
+<p><strong>Alter table 表名 drop index index name</strong></p>
+<p><strong>9.添加索引：</strong></p>
+<p><strong>Alter table 表名 add index index_name</strong></p>
+<p><strong>删除数据库：</strong></p>
+<p><strong>drop database 数据库名</strong></p>
+<p><strong>创建表. 实操P56.例题3--4</strong></p>
+<p><strong>Desc+表名 查看表</strong></p>
+<p><strong>drop table表名 删除表</strong></p>
+<p><strong>Alter table 表名 modify 字段名 ，字段类型 afer 目标字段（修改字段位置）</strong></p>
+<h3><strong>复制表</strong></h3>
+<p><strong>create table 新表名 like要复制的表名 （仅复制表的结构）</strong></p>
+<p><strong>复制表结构和表数据：</strong></p>
+<p><strong>create table 新表名 as select * from 要复制的表的表名</strong></p>
+<p><strong>修改列名：</strong></p>
+<p><strong>Alter table表名change旧表名，新列名，新列定义</strong></p>
+<h3><strong>约束：</strong></h3>
+<h4><strong>一，主键：</strong></h4>
+<p><strong>1.定义主键，定义复合主键 P61</strong></p>
+<p><strong>2.在已有表中创建主键</strong></p>
+<p><strong>Alter table表名 add primaary key （列名）</strong></p>
+<p><strong>3.删除主键和替代键约：</strong></p>
+<p><strong>Alter table 表名 add primary key(主键)</strong></p>
+<p><strong>删除主键和替代键约束</strong></p>
+<p><strong>Alter table表名
+Drop primary key 删除主键
+Drop index 索引名 删除替代键</strong></p>
+<p><strong>Drop index 索引名</strong></p>
+<p><strong>4.替代键约束 P62</strong></p>
+<p><strong>Unique： add unique索引名 列名</strong></p>
+<p><strong>参照完整性约束的语法定义 P64~65</strong></p>
+<p><strong>restrict, cascade, setnull, no action, set default. check</strong></p>
+<p><strong>完整性约束P66 限制性条件</strong></p>
+<h3><strong>3.4. Navicat Mysql</strong></h3>
+<h4><strong>数据操作</strong></h4>
+<h5><strong>数据插入</strong></h5>
+<p><strong>insert into表名 (列名1， 列名2，….) valuse （插入的实际数据值） 实例 P83，例4--2</strong></p>
+<p><strong>replace语句：</strong></p>
+<p><strong>replace into 表名 （列名1， 列名2， 列名3， …） valuse (插入的值)</strong></p>
+<h5><strong>数据修改：</strong></h5>
+<p><strong>单表数据修改; update表名 set列名1 = 新列名 where条件</strong></p>
+<p><strong>2.多表数据修改p85：</strong></p>
+<p><strong>update表名 set 列名1 = 表达式1， 列名2 = 列名2 where条件</strong></p>
+<h5><strong>数据删除：</strong></h5>
+<p><strong>1.单表删除：</strong></p>
+<p><strong>delete from表名 where条件</strong></p>
+<p><strong>2.多表删除：</strong></p>
+<p><strong>delete from表名1， 表名2， …. using表名列表 where条件</strong></p>
+<h2><strong>五， 数据查询：</strong></h2>
+<p><strong>1. 单表查询：</strong></p>
+<p><strong>select列名1， 列名2， 列名3，… from表名</strong></p>
+<p><strong>2. 定义列名：</strong></p>
+<p><strong>select 旧列名 as 新列名 p101 where 条件</strong></p>
+<p><strong>3.替换查询结果中的数据：</strong></p>
+<p><strong>select 列名 case when 条件1 then 表达式2 when 条件2 then 表达式2 else 表达式n from表名</strong></p>
+<p><strong>代码解释：若条件1成立则输出表达式1，若条件1不成立判断条件2，条件2成立，输出表达式2，若均不成立，输出表达式n</strong></p>
+<p><strong>计算列值：</strong></p>
+<p><strong>例：对sell表中已发货的记录计算订购金额（订购金额 = 订购册数 × 订购单价）</strong></p>
+<p><strong>select 图书编号, round （订购册数 × 订购单价） from sell where是否发货 = ‘已发货’；</strong></p>
+<p><strong>消除结果集中的重复行：</strong></p>
+<p><strong>select distinct 列名1， 列名2，from表名</strong></p>
+<h3><strong>where子句</strong></h3>
+<h4><strong>六. 比较运算：</strong></h4>
+<p><strong>{=， <, >, <=, >=, <=>(相等或都等于空), <>,!=(不等于),}</strong></p>
+<p><strong>select *， from 表名， where 条件，</strong></p>
+<p><strong>NOT或 ！ 非</strong></p>
+<p><strong>and或&&逻辑与，</strong></p>
+<p><strong>or或 || 逻辑或</strong></p>
+<p><strong>逻辑运算符 P105</strong></p>
+<p><strong>范围运算符between..and…</strong></p>
+<p><strong>列表运算符 in.</strong></p>
+<p><strong>模糊运算符 like</strong></p>
+<p><strong>空值判断符is null.</strong></p>
+<p><strong>模式匹配</strong></p>
+<p><strong>例：查询表中姓李的会员用户号姓名及注册时间</strong></p>
+<p><strong>select用户号、姓名，注册时间 from members where姓名like‘李%';</strong></p>
+<p><strong>查询姓李的双名会员：</strong></p>
+<p><strong>select用户名， 姓名， 注册时间 from members where 姓名 like "李 ";</strong></p>
+<p><strong>例：查询book表中图书编号中倒数第二位为6的图书编号和姓名：</strong></p>
+<p><strong>select 图书编号， 姓名 from book where 图书编号 like ‘%6 ’；</strong></p>
+<p><strong>查book 表中书名包含下划线的图书：</strong></p>
+<p><strong>select图书编号， 姓名 from book where 书名 like ‘%#_%’ escape '#'; </strong></p>
+<p><strong>条件语句实例 P107</strong></p>
+<p><strong>5.空值比较：</strong></p>
+<p><strong>select * from sell where 是否发货 is null;</strong></p>
+<p><strong>☆ 多表连接 结果为笛卡尔【cross】join,join连接</strong></p>
+<h4><strong>1.连接方式：（1）全连接（交叉连接）</strong></h4>
+<p><strong>sum 总和， avg平均值， max 最大值， min最小值， count 选中项目个数</strong></p>
+<p><strong>select查询字段 from 表1， 表2， 表3， where表1， 关系字段 = 表2，关系字段 and表2关系字段=表3关系字段</strong></p>
+<h4><strong>（2）内连接：</strong></h4>
+<p><strong>Select查询字段 From表1[inner]表2[inner]表3 On表1关系字段=表2关系字段 And表2关系字段=表3关系字段</strong></p>
+<p><strong>P108多表连接</strong></p>
+<h4><strong>（3）外连接：</strong></h4>
+<p><strong>Select所查字段left [outer] join 右表名 on 连接条件</strong></p>
+<h4><strong>in 子查询：</strong></h4>
+<p><strong>select * from sell where 用户号 in (select 用户号 from, members, where姓名 = ‘张三’）；</strong></p>
+<p><strong>完整查询嵌套查询条件：</strong></p>
+<p><strong>select * from members where用户号 in (select用户号 from sell where图书编号not in) （ select 图书编号 from book where书名 = ‘MySQL 数据库'));</strong></p>
+<p><strong>比较子查询：</strong></p>
+<p><strong>表达式的值与子查询的结果集进行运算。</strong></p>
+<p><strong>select * from members where 用户号 = any （select 用户号 from sell） where 图书编号 = ’TP,2525‘ </strong></p>
+<p><strong>P144 子查询，联合查询 （实操）；</strong></p>
+<p><strong>☆分类汇总与排序，实操 P118--P119</strong></p>
+<h4><strong>Group By 语句 P120</strong></h4>
+<p><strong>输出book表中的图书类别</strong></p>
+<p><strong>select 图书类别 from book Group By 图书类别；</strong></p>
+<p><strong>分类别统计各类图书库存数：</strong></p>
+<p><strong>select 图书类别 ，sum （数量） as ’库存数‘ from book Group By 图书类别；</strong></p>
+<p><strong>分类统计订单数和订单的平均订购册数：</strong></p>
+<p><strong>select 图书编号 ，round （avg (订购册数)， 2） as ’订购册数‘ count （订单号） as '订单数' from sell Group By 图书编号；</strong></p>
+<p><strong>按图书类别，出版社分类统计 book 表中各类图书库存数：</strong></p>
+<p><strong>1.select 图书类别， 出版社， sum （数量） as ’库存数‘ from book Group By 图书类别， 出版社</strong></p>
+<p><strong>2.with rollup</strong></p>
+<p><strong>select 图书类别， 出版社， sum(数量) as ’库存数‘ from book Group By 图书类别 ， 出版社 with rollup;</strong></p>
+<h4><strong>Having 语句：</strong></h4>
+<p><strong>Having关键字和where关键字作用相同都用于设置条件.表达式对查询结果进行过滤，区别于Having关键字可跟聚合函数，where则不可</strong></p>
+<p><strong>Having子句中的列只能是Group By 或聚合函数中出现的列可在SELECT子句和Having子句中用可聚合函数</strong></p>
+<p><strong>可聚合函数： max, min, avg, count</strong></p>
+<p><strong>查找sell表中平均订购册数5本以上的用户号和平均订购册数</strong></p>
+<p><strong>Select用户号 round （avg（订购册数），2）as 平均订购册数 From sell Group by用户号 Having avg(订购册数)>5;(相当于where条件语句) </strong></p>
+<p><strong>注：分类汇总前一定要排序</strong></p>
+<p><strong>查找订单数 2 笔 以上且每笔订购册数 5 本以上 用户号：</strong></p>
+<p><strong>select 用户号 from sell where 订购册数 > 5 Group By 用户号 Having count (*) >=2;</strong></p>
+<h4><strong>order By 语句：</strong></h4>
+<p><strong>ASC 表示升序排列</strong></p>
+<p><strong>DESC 表示降序排列</strong></p>
+<p><strong>订购册数由多至少排列</strong></p>
+<p><strong>实例; select * from sell order By 订购册数 DESC</strong></p>
+<h4><strong>Limit 子句：</strong></h4>
+<p><strong>limit 5 表示结果集中最前面的5行</strong></p>
+<p><strong>limit 3，5表示从第4行开始的5行查询结果</strong></p>
+<p><strong>select * from members order By注册时间（标定查询目标列） limit 5</strong></p>
+<p><strong>select * from members order By图书编号 limit3，5</strong></p>
+<h3><strong>数据视图：</strong></h3>
+<p><strong>视图：一个表或多个表中导出的虚拟表</strong></p>
+<p><strong>创建视图：</strong></p>
+<p><strong>Create or replace view (视图名) as select 被选定的目标列 from表 where.条件 and(聚合函数) with check option（解释保证视图权限范围之内）</strong></p>
+<p><strong>实例：create or replace viewjij-sell as select订单号,sell.图书编号,书名,订购册数 from book, sell where book,图书编号= sell、图书编号 and book,图书类别=计算机 with check option;</strong></p>
+<p><strong>查询视图：</strong></p>
+    <h2><strong>查询视图：</strong></h2>
+    <p><strong><b>select(选定的要查询的目标列列名 </b></strong></p>
+    <p><strong><b>from视图名 </b></strong></p>
+    <p><strong><b>(where条件语句) </b></strong></p>
+    <p><strong><b>select订单号、订购册数 </b></strong></p>
+    <p><strong><b>from JSJ-sell.</b></strong></p>
+    <h3><strong>操作视图：</strong></h3>
+    <p><strong><b>insert into 表名 </b></strong></p>
+    <p><strong><b>valuse  (要插入的数据，以及是否为空（null / not null）);</b></strong></p>
+    <p><strong><b>insert  into   JSJ—book（视图名）</b></strong></p>
+    <p><strong><b>valuse  ('TP,0837', '计算机', 'office应用实例',  '张拾怡'…..null,null,null[数据类型])</b></strong></p>
+    <h3><strong>修改数据：</strong></h3>
+    <p><strong><b>update  表名 </b></strong></p>
+    <p><strong><b>set   旧数据  = 新数据</b></strong></p>
+    <h4><strong>带附件条件：</strong></h4>
+    <p><strong><b>1.update  JSJ –sell(视图名) </b></strong></p>
+    <p><strong><b>set  书名  = ’PHP网站制作‘</b></strong></p>
+    <p><strong><b>where  图书编号 = ’TP,25,25‘；</b></strong></p>
+    <p><strong><b>在JSJ--sell 视图中将图书编号  TP,25，25 的图书名改为PHP网站制做</b></strong></p>
+    <h3><strong>删除数据：</strong></h3>
+    <p><strong><b>delete  from  视图名 </b></strong></p>
+    <p><strong><b>where   要删除的数据所在列的列名 = 所要删除的数据</b></strong></p>
+    <p><strong><b>delete  from  JSJ--book</b></strong></p>
+    <p><strong><b>where 出版社 = ’人民邮政出版社‘</b></strong></p>
+    <h3><strong>修改视图定义：</strong></h3>
+    <p><strong><b>Alter view (视图名) JSJ—book </b></strong></p>
+    <p><strong><b>as </b></strong></p>
+    <p><strong><b>select  图书编号，书名， 单价</b></strong></p>
+    <p><strong><b>from  book</b></strong></p>
+    <p><strong><b>where  图书类别 = ’计算机‘；</b></strong></p>
+    <p><strong><b>将视图改为只包括计算机类得到图书编号，书名， 单价</b></strong></p>
+    <h3><strong>删除视图：</strong></h3>
+    <p><strong><b>Drop view 视图名</b></strong></p>
+    <h2><strong>★ 存储： P166</strong></h2>
+    <p><strong><b>Delimiter $$(进入存储)</b></strong></p>
+    <p><strong><b>Create procedure (存储名)[in 表名 数据类型]</b></strong></p>
+    <p><strong><b>Begin</b></strong></p>
+    <p><strong><b>操作</b></strong></p>
+    <p><strong><b>End</b></strong></p>
+    <p><strong><b>Delimiter;(退出存储)</b></strong></p>
+    <p><strong><b>显示存储</b></strong></p>
+    <p><strong><b>Show  procedure status;</b></strong></p>
+    <p><strong><b>调用存储</b></strong></p>
+    <p><strong><b>Call 存储名</b></strong></p>
+    <p><strong><b>删除存储</b></strong></p>
+    <p><strong><b>Drop  procedure 存储名</b></strong></p>
+</body>
+
+</html>
